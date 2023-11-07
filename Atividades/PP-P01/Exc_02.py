@@ -30,7 +30,7 @@ c = 5
 c += 2
 print(c)  # 7
 
-#Python podemos representar números inteiros muito grande
+#Python podemos representar números inteiros muito grande sem apresentar problemas (como em C++).
 import math
 
 fatorial_30 = math.factorial(30)
@@ -43,3 +43,64 @@ a = 5
 b = a  # 'b' agora tem o mesmo valor que 'a'
 a = 10  # 'a' recebe um novo valor, 'b' não é afetado
 print(b)  # Ainda será 5, porque 'b' manteve seu valor original
+
+# Métodos Disponíveis para Variáveis Inteiras:
+# Variáveis inteiras em Python pertencem à classe int,
+# Elas têm métodos associados a elas. 
+# Seguem alguns exemplos de métodos disponíveis:
+
+x = 42
+
+# Converter para string
+str_x = str(x)
+print(str_x)  # '42'
+
+# Verificar se é par
+is_even = x % 2 == 0
+print(is_even)  # True
+
+# Calcular o valor absoluto
+abs_x = abs(x)
+print(abs_x)  # 42
+
+# Obter o tamanho em bytes
+size_in_bytes = x.bit_length() // 8
+print(size_in_bytes)  # 1 (para 42)
+
+# Método para converter para hexadecimal
+hex_x = hex(x)
+print(hex_x)  # '0x2a'
+
+# Método para converter para binário
+bin_x = bin(x)
+print(bin_x)  # '0b101010'
+
+# Método para converter para octal
+oct_x = oct(x)
+print(oct_x)  # '0o52'
+
+# Método para verificar se o número é ímpar
+is_odd = x.__bool__()  # Retorna True para números ímpares e False para números pares
+print(is_odd)  # True
+
+# Método para encontrar o máximo com outro número
+y = 30
+max_value = x.__max__(y)
+print(max_value)  # 42
+
+# Método para encontrar o mínimo com outro número
+min_value = x.__min__(y)
+print(min_value)  # 30
+
+# Método para arredondar o número para cima
+rounded_up = x.__ceil__()
+print(rounded_up)  # 42
+
+# Método para arredondar o número para baixo
+rounded_down = x.__floor__()
+print(rounded_down)  # 42
+
+# Método para verificar se o número é negativo
+is_negative = x.__neg__()  # Retorna x se for positivo, caso contrário, -x
+print(is_negative)  # -42
+
