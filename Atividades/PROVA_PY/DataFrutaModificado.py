@@ -96,6 +96,10 @@ class AnaliseDados(ABC):
     def mostraMaior(self):
         pass
 
+    @abstractmethod
+    def listarEmOrdem(self):
+        pass
+
 class ListaNomes(AnaliseDados):
     
     def __init__(self):
@@ -124,6 +128,11 @@ class ListaNomes(AnaliseDados):
 
     def mostraMaior(self):
         print(f"Maior: {max(self.__lista)}")
+
+    def listarEmOrdem(self):
+        print("Lista de Nomes em Ordem:")
+        for nome in sorted(self.__lista):
+            print(nome)
 
     def __str__(self):
         return ", ".join(self.__lista)
@@ -160,6 +169,11 @@ class ListaDatas(AnaliseDados):
     def mostraMaior(self):
         print(f"Maior: {max(self.__lista)}")
 
+    def listarEmOrdem(self):
+        print("Lista de Datas em Ordem:")
+        for data in sorted(self.__lista):
+            print(data)
+
     def __str__(self):
         return "\n".join(map(str, self.__lista))
 
@@ -192,6 +206,11 @@ class ListaSalarios(AnaliseDados):
 
     def mostraMaior(self):
         print(f"Maior: {max(self.__lista):.2f}")
+
+    def listarEmOrdem(self):
+        print("Lista de Salários em Ordem:")
+        for salario in sorted(self.__lista):
+            print(f"Salário: {salario:.2f}")
 
     def __str__(self):
         return ", ".join(map(str, self.__lista))
@@ -226,6 +245,11 @@ class ListaIdades(AnaliseDados):
     def mostraMaior(self):
         print(f"Maior: {max(self.__lista)}")
 
+    def listarEmOrdem(self):
+        print("Lista de Idades em Ordem:")
+        for idade in sorted(self.__lista):
+            print(idade)
+
     def __str__(self):
         return ", ".join(map(str, self.__lista))
 
@@ -242,6 +266,7 @@ def main():
         lista.mostraMediana()
         lista.mostraMenor()
         lista.mostraMaior()
+        lista.listarEmOrdem()
         print("_______________________________________")
 
     print("*** Fim do teste ***")
