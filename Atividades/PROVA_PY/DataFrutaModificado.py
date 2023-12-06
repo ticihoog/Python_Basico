@@ -111,6 +111,7 @@ class ListaNomes(AnaliseDados):
         for _ in range(n):
             nome = input("Digite um nome: ")
             self.__lista.append(nome)
+            print(f"Nome {nome} incluído na lista.")
 
     def mostraMediana(self):
         sorted_list = sorted(self.__lista)
@@ -151,6 +152,7 @@ class ListaDatas(AnaliseDados):
             ano = int(input("Digite o ano: "))
             data = Data(dia, mes, ano)
             self.__lista.append(data)
+            print(f"Data {data} incluída na lista.")
 
     def mostraMediana(self):
         sorted_list = sorted(self.__lista, key=lambda x: (x.ano, x.mes, x.dia))
@@ -188,6 +190,7 @@ class ListaSalarios(AnaliseDados):
         for _ in range(n):
             salario = float(input("Digite um salário: "))
             self.__lista.append(salario)
+            print(f"Salário {salario:.2f} incluído na lista.")
 
     def mostraMediana(self):
         sorted_list = sorted(self.__lista)
@@ -226,6 +229,7 @@ class ListaIdades(AnaliseDados):
         for _ in range(n):
             idade = int(input("Digite uma idade: "))
             self.__lista.append(idade)
+            print(f"Idade {idade} incluída na lista.")
 
     def mostraMediana(self):
         sorted_list = sorted(self.__lista)
@@ -253,23 +257,50 @@ class ListaIdades(AnaliseDados):
     def __str__(self):
         return ", ".join(map(str, self.__lista))
 
-def main():
+def menu():
     nomes = ListaNomes()
     datas = ListaDatas()
     salarios = ListaSalarios()
     idades = ListaIdades()
 
-    listaListas = [nomes, datas, salarios, idades]
+    while True:
+        print("\nMenu de Opções:")
+        print("1. Incluir um nome na lista de nomes")
+        print("2. Incluir um salário na lista de salários")
+        print("3. Incluir uma data na lista de datas")
+        print("4. Incluir uma idade na lista de idades")
+        print("5. Percorrer as listas de nomes e salários")
+        print("6. Calcular o valor da folha com um reajuste de 10%")
+        print("7. Modificar o dia das datas anteriores a 2019")
+        print("8. Sair")
 
-    for lista in listaListas:
-        lista.entradaDeDados()
-        lista.mostraMediana()
-        lista.mostraMenor()
-        lista.mostraMaior()
-        lista.listarEmOrdem()
-        print("_______________________________________")
+        escolha = input("Escolha uma opção (1-8): ")
 
-    print("*** Fim do teste ***")
+        if escolha == '1':
+            nomes.entradaDeDados()
+        elif escolha == '2':
+            salarios.entradaDeDados()
+        elif escolha == '3':
+            datas.entradaDeDados()
+        elif escolha == '4':
+            idades.entradaDeDados()
+        elif escolha == '5':
+            nomes.listarEmOrdem()
+            salarios.listarEmOrdem()
+        elif escolha == '6':
+            salarios.mostraMaior()
+            salarios.mostraMenor()
+            salarios.mostraMediana()
+        elif escolha == '7':
+            datas.listarEmOrdem()
+            datas.mostraMaior()
+            datas.mostraMenor()
+            datas.mostraMediana()
+        elif escolha == '8':
+            print("*** Saindo do programa ***")
+            break
+        else:
+            print("Opção inválida. Escolha novamente.")
 
 if __name__ == "__main__":
-    main()
+    menu()
